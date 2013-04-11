@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="welcome">Bienvenue sur %s!</string>
+	<string name="numzle">Numzle</string>
+	<string name="matchmake">Match rapide</string>
+	<string name="private_lobby">Partie privée</string>
+	<string name="train">Entraînement</string>
+</resources>
