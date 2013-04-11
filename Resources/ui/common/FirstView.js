@@ -10,34 +10,34 @@ function FirstView() {
 		text:String.format(L('welcome'),'Numzle'),
 		height:'auto',
 		width:'auto',
-		top:'30px'
+		top:'50px'
 	});
 	self.add(label);
 	
 	var matchmaking = Ti.UI.createButton({
 		color:'#000000',
 		title:"Find match",
-		height:50,
+		height:80,
 		width:250,
-		top:'140px'
+		top:'180px'
 	});
 	self.add(matchmaking);
 	
 	var private_lobby = Ti.UI.createButton({
 		color:'#000000',
 		title:"Private lobby",
-		height:50,
+		height:80,
 		width:250,
-		top:'190px'
+		top:'270px'
 	});
 	self.add(private_lobby);
 	
 	var training = Ti.UI.createButton({
 		color:'#000000',
 		title:"Training",
-		height:50,
+		height:80,
 		width:250,
-		top:'240px'
+		top:'360px'
 	});
 	self.add(training);
 	
@@ -47,7 +47,7 @@ function FirstView() {
 		text:"Copyright M&C studios - 2013",
 		height:'auto',
 		width:'auto',
-		top:'400px'
+		top:'740px'
 	});
 	self.add(credits);
 		

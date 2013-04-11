@@ -10,7 +10,7 @@ function TrainingView() {
 		text:"Training",
 		height:'auto',
 		width:'auto',
-		top:'30px'
+		top:'50px'
 	});
 	self.add(label);
 	
@@ -36,10 +36,10 @@ function TrainingView() {
 		var digit = Ti.UI.createButton({
 			color:'#000000',
 			title:grid[i],
-			height:60,
-			width:60,
-			top:120+Math.floor(i/3)*65,
-			left:20+i%3*65,
+			height:100,
+			width:100,
+			top:200+Math.floor(i/3)*110,
+			left:20+i%3*110,
 		});
 		
 		self.add(digit);
