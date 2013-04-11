@@ -29,6 +29,16 @@ function TrainingView() {
 		return shuffle(grid);
 	}
 	
+	function generateNumbers() {
+		var tgrid = grid;
+		var d1 = tgrid[Math.floor(Math.random()*tgrid.length)];
+		tgrid.splice(tgrid.indexOf(d1), 1);
+		var d2 = tgrid[Math.floor(Math.random()*tgrid.length)];
+		tgrid.splice(tgrid.indexOf(d2), 1);
+		
+		return [d1 * d2];
+	}
+	
 	var grid = generateGrid(12, [6,4,2]);
 	
 	for(var i in grid) {
@@ -38,12 +48,24 @@ function TrainingView() {
 			title:grid[i],
 			height:100,
 			width:100,
-			top:200+Math.floor(i/3)*110,
+			top:220+Math.floor(i/3)*110,
 			left:20+i%3*110,
 		});
 		
 		self.add(digit);
 	}
+	
+	var numbers = generateNumbers();
+
+	var objectif = Ti.UI.createLabel({
+		color:'#000000',
+		font: { fontSize:24 },
+		text:"Trouvez : "+numbers[0],
+		height:'auto',
+		width:'auto',
+		top:'120px'
+	});
+	self.add(objectif);
 	
 	return self;
 }
