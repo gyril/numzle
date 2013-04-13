@@ -7,6 +7,7 @@ function ApplicationWindow() {
 	//create component instance
 	var self = Ti.UI.createWindow({
 		backgroundColor:'#ffffff',
+		backgroundImage:'ui/images/bg.png',
 		navBarHidden:true,
 		exitOnClose:true
 	});
@@ -20,7 +21,8 @@ function ApplicationWindow() {
 		var trainingContainerWindow = Ti.UI.createWindow({
 			title:'Training',
 			navBarHidden:true,
-			backgroundColor:'#ffffff'
+			backgroundColor:'#ffffff',
+			backgroundImage:'ui/images/bg.png'
 		});
 		trainingContainerWindow.add(trainingView);
 		trainingContainerWindow.open();

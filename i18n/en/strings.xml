@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
 	<string name="welcome">Welcome to %s!</string>
-	<string name="numzle">Numzle</string>
+	<string name="nummies">Nummies</string>
 	<string name="matchmake">Find match</string>
 	<string name="private_lobby">Private lobby</string>
 	<string name="train">Training</string>
+	<string name="credits">Copyright M&amp;amp;C studios - 2013</string>
 </resources>

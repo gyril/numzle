@@ -5,12 +5,12 @@ function TrainingView() {
 	
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
 	var label = Ti.UI.createLabel({
-		color:'#000000',
-		font: { fontSize:24 },
+		color:'#ffffff',
+		font: { fontSize:32 },
 		text:"Training",
 		height:'auto',
 		width:'auto',
-		top:'50px'
+		top:'20px'
 	});
 	self.add(label);
 	
@@ -39,6 +39,35 @@ function TrainingView() {
 		return [d1 * d2];
 	}
 	
+	var plusSign = Ti.UI.createButton({
+			color:'#000000',
+			title:"+",
+			height:100,
+			width:100,
+			visible:false
+		}),
+		minusSign = Ti.UI.createButton({
+			color:'#000000',
+			title:"-",
+			height:100,
+			width:100,
+			visible:false
+		}),
+		multiplySign = Ti.UI.createButton({
+			color:'#000000',
+			title:"x",
+			height:100,
+			width:100,
+			visible:false
+		}),
+		divideSign = Ti.UI.createButton({
+			color:'#000000',
+			title:"/",
+			height:100,
+			width:100,
+			visible:false
+		});
+	
 	var grid = generateGrid(12, [6,4,2]);
 	
 	for(var i in grid) {
@@ -49,7 +78,32 @@ function TrainingView() {
 			height:100,
 			width:100,
 			top:220+Math.floor(i/3)*110,
-			left:20+i%3*110,
+			left:20+i%3*110
+		});
+		
+		digit.addEventListener("touchstart", function() {
+			function touchend() {
+				self.removeEventListener("touchend", touchend);
+				plusSign.visible = false;
+				minusSign.visible = false;
+				multiplySign.visible = false;
+				divideSign.visible = false;
+			}
+			
+			plusSign.visible = true;
+			minusSign.visible = true;
+			multiplySign.visible = true;
+			divideSign.visible = true;
+			plusSign.top = digit.top - 110;
+			plusSign.left = digit.left;
+			minusSign.top = digit.top + 110;
+			minusSign.left = digit.left;
+			multiplySign.top = digit.top;
+			multiplySign.left = digit.left + 110;
+			divideSign.top = digit.top;
+			divideSign.left = digit.left - 110;
+			
+			self.addEventListener("touchend", touchend);
 		});
 		
 		self.add(digit);
@@ -58,14 +112,41 @@ function TrainingView() {
 	var numbers = generateNumbers();
 
 	var objectif = Ti.UI.createLabel({
-		color:'#000000',
+		color:'#ffffff',
 		font: { fontSize:24 },
-		text:"Trouvez : "+numbers[0],
+		text:"Find "+numbers[0],
 		height:'auto',
 		width:'auto',
 		top:'120px'
 	});
 	self.add(objectif);
+	
+	var timer = Ti.UI.createLabel({
+		color:'#ffffff',
+		font: { fontSize:18 },
+		text:"2:00",
+		height:'auto',
+		width:'auto',
+		top:'10px',
+		right:'10px'
+	});
+	self.add(timer);
+	
+	var endTime = (new Date()).getTime() + 120*1000;
+	var setTimer = setInterval(function() {
+		var now = (new Date()).getTime();
+		if(now > endTime) {
+			endGame();
+			clearInterval(setTimer);
+		} else {
+			var sec = Math.round((endTime - now) / 1000);
+			timer.text = Math.floor(sec/60) + ":" +((sec%60) >9 ? "" : "0")+ sec%60;
+		}
+	}, 500);
+	
+	function endGame() {
+		alert("Game over");
+	}
 	
 	return self;
 }

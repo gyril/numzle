@@ -5,8 +5,8 @@ function FirstView() {
 	
 	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
 	var label = Ti.UI.createLabel({
-		color:'#000000',
-		font: { fontSize:24 },
+		color:'#ffffff',
+		font: { fontSize:32 },
 		text:String.format(L('welcome'),'Nummies'),
 		height:'auto',
 		width:'auto',
@@ -16,35 +16,38 @@ function FirstView() {
 	
 	var matchmaking = Ti.UI.createButton({
 		color:'#000000',
-		title:"Find match",
+		title:L("matchmake","Find match"),
 		height:80,
 		width:250,
-		top:'180px'
+		top:'180px',
+		backgroundImage:'/images/bouton.png'
 	});
 	self.add(matchmaking);
 	
 	var private_lobby = Ti.UI.createButton({
 		color:'#000000',
-		title:"Private lobby",
+		title:L("private_lobby","Private lobby"),
 		height:80,
 		width:250,
-		top:'270px'
+		top:'270px',
+		backgroundImage:'/images/bouton.png'
 	});
 	self.add(private_lobby);
 	
 	var training = Ti.UI.createButton({
 		color:'#000000',
-		title:"Training",
+		title:L("train","Training"),
 		height:80,
 		width:250,
-		top:'360px'
+		top:'360px',
+		backgroundImage:'/images/bouton.png'
 	});
 	self.add(training);
 	
 	var credits = Ti.UI.createLabel({
-		color:'#000000',
+		color:'#ffffff',
 		font: { fontSize:12 },
-		text:"Copyright M&C studios - 2013",
+		text:L("credits","Copyright M&C studios - 2013"),
 		height:'auto',
 		width:'auto',
 		top:'740px'
