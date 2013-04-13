@@ -3,7 +3,8 @@
 	<string name="welcome">Bievenue sur %s !</string>
 	<string name="nummies">Nummies</string>
 	<string name="matchmake">Match rapide</string>
-	<string name="private_lobby">Partie priv&amp;eacute;e</string>
-	<string name="train">Entra&amp;icirc;nement</string>
-	<string name="credits">M&amp;amp;C studios - 2013</string>
+	<string name="private_lobby">Partie privée</string>
+	<string name="train">Entraînement</string>
+	<string name="credits">M&amp;C studios - 2013</string>
+	<string name="find">Trouvez %s</string>
 </resources>

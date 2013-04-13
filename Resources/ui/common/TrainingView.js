@@ -7,7 +7,7 @@ function TrainingView() {
 	var label = Ti.UI.createLabel({
 		color:'#ffffff',
 		font: { fontSize:32 },
-		text:"Training",
+		text:L("train","Training"),
 		height:'auto',
 		width:'auto',
 		top:'20px'
@@ -42,31 +42,40 @@ function TrainingView() {
 	var plusSign = Ti.UI.createButton({
 			color:'#000000',
 			title:"+",
-			height:100,
-			width:100,
-			visible:false
+			height:50,
+			width:50,
+			visible:false,
+			zIndex:1
 		}),
 		minusSign = Ti.UI.createButton({
 			color:'#000000',
 			title:"-",
-			height:100,
-			width:100,
-			visible:false
+			height:50,
+			width:50,
+			visible:false,
+			zIndex:1
 		}),
 		multiplySign = Ti.UI.createButton({
 			color:'#000000',
 			title:"x",
-			height:100,
-			width:100,
-			visible:false
+			height:50,
+			width:50,
+			visible:false,
+			zIndex:1
 		}),
 		divideSign = Ti.UI.createButton({
 			color:'#000000',
 			title:"/",
-			height:100,
-			width:100,
-			visible:false
+			height:50,
+			width:50,
+			visible:false,
+			zIndex:1
 		});
+		
+	self.add(plusSign);
+	self.add(minusSign);
+	self.add(multiplySign);
+	self.add(divideSign);
 	
 	var grid = generateGrid(12, [6,4,2]);
 	
@@ -78,33 +87,38 @@ function TrainingView() {
 			height:100,
 			width:100,
 			top:220+Math.floor(i/3)*110,
-			left:20+i%3*110
+			left:20+i%3*110,
+		backgroundImage:'/images/case.png'
 		});
 		
-		digit.addEventListener("touchstart", function() {
-			function touchend() {
-				self.removeEventListener("touchend", touchend);
-				plusSign.visible = false;
-				minusSign.visible = false;
-				multiplySign.visible = false;
-				divideSign.visible = false;
-			}
-			
-			plusSign.visible = true;
-			minusSign.visible = true;
-			multiplySign.visible = true;
-			divideSign.visible = true;
-			plusSign.top = digit.top - 110;
-			plusSign.left = digit.left;
-			minusSign.top = digit.top + 110;
-			minusSign.left = digit.left;
-			multiplySign.top = digit.top;
-			multiplySign.left = digit.left + 110;
-			divideSign.top = digit.top;
-			divideSign.left = digit.left - 110;
-			
-			self.addEventListener("touchend", touchend);
-		});
+		(function(digit) {
+			digit.addEventListener("touchstart", function() {
+				
+				function touchend() {
+					self.removeEventListener("touchend", touchend);
+					plusSign.visible = false;
+					minusSign.visible = false;
+					multiplySign.visible = false;
+					divideSign.visible = false;
+				}
+				
+				plusSign.top = digit.getTop() - 55;
+				plusSign.left = digit.getLeft() + 25;
+				minusSign.top = digit.getTop() + 105;
+				minusSign.left = digit.getLeft() + 25;
+				multiplySign.top = digit.getTop() + 25;
+				multiplySign.left = digit.getLeft() + 105;
+				divideSign.top = digit.getTop() + 25;
+				divideSign.left = digit.getLeft() - 55;
+
+				plusSign.visible = true;
+				minusSign.visible = true;
+				multiplySign.visible = true;
+				divideSign.visible = true;
+				
+				self.addEventListener("touchend", touchend);
+			});
+		})(digit)
 		
 		self.add(digit);
 	}
@@ -114,7 +128,7 @@ function TrainingView() {
 	var objectif = Ti.UI.createLabel({
 		color:'#ffffff',
 		font: { fontSize:24 },
-		text:"Find "+numbers[0],
+		text:String.format(L('find', "Find "+numbers[0]),numbers[0]),
 		height:'auto',
 		width:'auto',
 		top:'120px'

@@ -8,8 +8,8 @@
         <target device="blackberry">false</target>
     </deployment-targets>
     <sdk-version>3.0.2.GA</sdk-version>
-    <id>com.mc.nuzzle</id>
-    <name>Numzle</name>
+    <id>com.mc.nummies</id>
+    <name>Nummies</name>
     <version>1.0</version>
     <publisher>M&amp;C</publisher>
     <url>http://</url>
@@ -36,7 +36,12 @@
             <orientation>Ti.UI.LANDSCAPE_RIGHT</orientation>
         </orientations>
     </iphone>
-    <android xmlns:android="http://schemas.android.com/apk/res/android"/>
+    <android xmlns:android="http://schemas.android.com/apk/res/android">
+        <manifest>
+            <application android:debuggable="false"
+                android:icon="@drawable/appicon" android:label="Nummies"/>
+        </manifest>
+    </android>
     <mobileweb>
         <precache/>
         <splash>

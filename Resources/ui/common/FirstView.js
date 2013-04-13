@@ -20,7 +20,7 @@ function FirstView() {
 		height:80,
 		width:250,
 		top:'180px',
-		backgroundImage:'/images/bouton.png'
+		backgroundImage:'/images/bouton1.png'
 	});
 	self.add(matchmaking);
 	
@@ -30,7 +30,7 @@ function FirstView() {
 		height:80,
 		width:250,
 		top:'270px',
-		backgroundImage:'/images/bouton.png'
+		backgroundImage:'/images/bouton1.png'
 	});
 	self.add(private_lobby);
 	
@@ -40,7 +40,7 @@ function FirstView() {
 		height:80,
 		width:250,
 		top:'360px',
-		backgroundImage:'/images/bouton.png'
+		backgroundImage:'/images/bouton1.png'
 	});
 	self.add(training);
 	
