@@ -11,10 +11,10 @@
     <id>com.mc.nuzzle</id>
     <name>Numzle</name>
     <version>1.0</version>
-    <publisher>cyril</publisher>
+    <publisher>M&amp;C</publisher>
     <url>http://</url>
     <description>not specified</description>
-    <copyright>2013 by cyril</copyright>
+    <copyright>M&amp;C 2013</copyright>
     <icon>appicon.png</icon>
     <persistent-wifi>false</persistent-wifi>
     <prerendered-icon>false</prerendered-icon>

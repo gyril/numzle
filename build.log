@@ -1,12 +1,19 @@
 Logfile initialized
 [INFO] logfile = /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build.log
-[DEBUG] /Users/cyril/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/builder.py install Numzle /Users/cyril/Documents/sdk/android /Users/cyril/Documents/Titanium Studio Workspace/Numzle com.mc.nuzzle 7  
+[DEBUG] /Users/cyril/Library/Application Support/Titanium/mobilesdk/osx/3.0.2.GA/android/builder.py simulator Numzle /Users/cyril/Documents/sdk/android /Users/cyril/Documents/Titanium Studio Workspace/Numzle com.mc.nuzzle 7 WVGA800 
+[INFO] Building Numzle for Android ... one moment
 [INFO] Titanium SDK version: 3.0.2 (02/15/13 19:02 5a77fe7)
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
-[DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.018146 seconds on emulator to get ready
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[TRACE] adb devices returned 1 devices/emulators
+[DEBUG] Device connected... (waited 15 seconds)
+[DEBUG] waited 15.088677 seconds on emulator to get ready
+[INFO] Waiting for the Android Emulator to become available
+[ERROR] Timed out waiting for android.process.acore
 [DEBUG] com.mc.nuzzle installed? False
+[WARN] Fastdev enabled, but server isn't running, deploying normally
 [INFO] Copying CommonJS modules...
 [INFO] Copying project resources..
 [INFO] Detected change in tiapp.xml, or assets deleted. Forcing full re-build...
@@ -16,6 +23,7 @@ Logfile initialized
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/KS_nav_ui.png => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/KS_nav_ui.png
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/KS_nav_views.png => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/KS_nav_views.png
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/ui/common/FirstView.js => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/ui/common/FirstView.js
+[TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/ui/common/TrainingView.js => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/ui/common/TrainingView.js
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/ui/handheld/android/ApplicationWindow.js => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/ui/handheld/android/ApplicationWindow.js
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/ui/handheld/ApplicationWindow.js => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/ui/handheld/ApplicationWindow.js
 [TRACE] COPYING CREATED FILE: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/Resources/ui/tablet/ApplicationWindow.js => /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/assets/Resources/ui/tablet/ApplicationWindow.js
@@ -53,11 +61,11 @@ Logfile initialized
 [DEBUG] adding /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/R.java to javac build list
 [DEBUG] Building Java Sources: "/Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/ApplicationStylesheet.java" "/Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/NumzleActivity.java" "/Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/NumzleAppInfo.java" "/Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/NumzleApplication.java" "/Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/gen/com/mc/nuzzle/R.java"
 [INFO] Waiting for SDCard to become available..
-[ERROR] Timed out waiting for SDCard to become available (60s)
 [INFO] Compiling Android Resources... This could take some time
 [DEBUG] Android classes.dex built
 [DEBUG] creating unsigned apk: /Users/cyril/Documents/Titanium Studio Workspace/Numzle/build/android/bin/app-unsigned.apk
 [DEBUG] from resource zip => assets/Resources/ui/common/FirstView.js
+[DEBUG] from resource zip => assets/Resources/ui/common/TrainingView.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/android/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/handheld/ApplicationWindow.js
 [DEBUG] from resource zip => assets/Resources/ui/tablet/ApplicationWindow.js
@@ -108,6 +116,9 @@ Logfile initialized
 [DEBUG] Waiting for device to be ready ...
 [TRACE] adb devices returned 1 devices/emulators
 [DEBUG] Device connected... (waited 0 seconds)
-[DEBUG] waited 0.018435 seconds on emulator to get ready
-[INFO] Installing application on device
-[INFO] Application installed. Launch from drawer on Home Screen
+[DEBUG] waited 0.017850 seconds on emulator to get ready
+[INFO] Installing application on emulator
+[INFO] Launching application ... Numzle
+[TRACE] Launch output: Starting: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.mc.nuzzle/.NumzleActivity }
+
+[INFO] Deployed Numzle ... Application should be running.

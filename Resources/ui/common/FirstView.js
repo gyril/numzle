@@ -7,7 +7,7 @@ function FirstView() {
 	var label = Ti.UI.createLabel({
 		color:'#000000',
 		font: { fontSize:24 },
-		text:String.format(L('welcome'),'Numzle'),
+		text:String.format(L('welcome'),'Nummies'),
 		height:'auto',
 		width:'auto',
 		top:'50px'
