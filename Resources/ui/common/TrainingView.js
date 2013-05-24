@@ -3,16 +3,80 @@ function TrainingView() {
 	//create object instance, a parasitic subclass of Observable
 	var self = Ti.UI.createView();
 	
-	//label using localization-ready strings from <app dir>/i18n/en/strings.xml
-	var label = Ti.UI.createLabel({
-		color:'#ffffff',
-		font: { fontSize:32 },
-		text:L("train","Training"),
-		height:'auto',
-		width:'auto',
-		top:'20px'
-	});
-	self.add(label);
+	/*
+	 * CLASSES
+	 * 
+	 * Label, Bouton
+	 * 
+	 */
+	
+	function Label (text, size, top, left) {
+		this.object = Ti.UI.createLabel({
+			color:'#ffffff',
+			font: { fontSize: size},
+			text: text,
+			height:'auto',
+			width:'auto',
+			top:top
+		});
+		
+		if(typeof left != 'undefined')
+			this.object.left = left;
+		
+		this.setText = function(text) {
+			this.object.text = text;
+		}
+		
+		this.setRight = function(pos) {
+			this.object.right = pos;
+		}
+		
+		this.setColor = function(color) {
+			this.object.color = color;
+		}
+		
+		self.add(this.object);
+	};
+	
+	function Bouton (title, height, width, top, left, zindex) {
+		this.object = Ti.UI.createButton({
+			color:'#000000',
+			title:title,
+			height:height,
+			width:width,
+			top: top,
+			left: left
+		});
+		
+		if(typeof zindex != 'undefined')
+			this.object.zIndex = zindex;
+		
+		this.setTitle = function(text) {
+			this.object.title = text;
+		}
+		
+		this.setColor = function(color) {
+			this.object.color = color;
+		}
+		
+		this.setBackgroundColor = function(hex) {
+			this.object.backgroundColor = hex;
+		}
+		
+		this.click = function(fn) {
+			this.object.addEventListener("click", fn);
+		}
+		
+		self.add(this.object);
+	};
+	
+
+	/*
+	 * GAME FUNCTIONS
+	 * 
+	 * generateGrid, generateResult, addEventListeners, etc.
+	 * 
+	 */
 	
 	function shuffle(o){
 	    for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
@@ -69,54 +133,26 @@ function TrainingView() {
 		}
 	}
 	
-	var plusSign = Ti.UI.createButton({
-			color:'#000000',
-			title:"+",
-			height:100,
-			width:100,
-			visible:true,
-			zIndex:1,
-			top: 220,
-			left: 360
-		}),
-		minusSign = Ti.UI.createButton({
-			color:'#000000',
-			title:"-",
-			height:100,
-			width:100,
-			visible:true,
-			zIndex:1,
-			top: 330,
-			left: 360
-		}),
-		multiplySign = Ti.UI.createButton({
-			color:'#000000',
-			title:"x",
-			height:100,
-			width:100,
-			visible:true,
-			zIndex:1,
-			top: 440,
-			left: 360
-		}),
-		propDisplay = Ti.UI.createLabel({
-			color:'#ffffff',
-			font: { fontSize:26 },
-			text:"",
-			height:'auto',
-			width:'auto',
-			top:'150px'
-		});
-		
-	self.add(plusSign);
-	self.add(minusSign);
-	self.add(multiplySign);
-	self.add(propDisplay);
+	function endGame() {
+		timer.setText("00:00");
+		alert("Game over");
+	}
+
 	
-	plusSign.addEventListener("touchend", function() { operation = 0; }, false);
-	minusSign.addEventListener("touchend", function() { operation = 1; }, false);
-	multiplySign.addEventListener("touchend", function() { operation = 2; }, false);
+	/*
+	 * STAGE
+	 * 
+	 * Title, Objective, Timer, Signs, Grid, Proposition
+	 * 
+	 */
 	
+	var title = new Label(L("train","Training"), 32, 20);
+	var propDisplay = new Label("", 26, 150);
+
+	var plusSign = new Bouton("+", 100, 100, 220, 360),
+		minusSign = new Bouton("-", 100, 100, 330, 360),
+		plusSign = new Bouton("x", 100, 100, 440, 360);
+		 
 	var proposition = 0;
 	var operation = 0;
 	var grid = generateGrid(9, [5,4,0]);
@@ -135,10 +171,7 @@ function TrainingView() {
 		
 		(function(digit) {
 			digit.addEventListener("touchend", function() {
-				
-//				function touchend() {
-//					self.removeEventListener("touchend", touchend);
-//				}
+
 				console.log(digit.title);
 				switch(operation) {
 					case 0:
@@ -156,7 +189,6 @@ function TrainingView() {
 				
 				refreshProposition();
 				
-//				self.addEventListener("touchend", touchend);
 			});
 		})(digit)
 		
@@ -165,53 +197,20 @@ function TrainingView() {
 	
 	var numbers = generateNumbers(grid);
 
-	var objectif = Ti.UI.createLabel({
-		color:'#ffffff',
-		font: { fontSize:24 },
-		text:String.format(L('find', "Find "+numbers[0]),numbers[0]),
-		height:'auto',
-		width:'auto',
-		top:'120px'
-	});
-	self.add(objectif);
+	var objectif = new Label(String.format(L('find', "Find "+numbers[0]),numbers[0]), 24, 120),
+		timer = new Label("2:00", 18, 10);
+	timer.setRight(10);
 	
-	var timer = Ti.UI.createLabel({
-		color:'#ffffff',
-		font: { fontSize:18 },
-		text:"2:00",
-		height:'auto',
-		width:'auto',
-		top:'10px',
-		right:'10px'
-	});
-	self.add(timer);
-	
-	var validate = Ti.UI.createButton({
-		backgroundColor: '#00FF00',
-		color:'#FFFFFF',
-		title:"OK",
-		height:50,
-		width:150,
-		top:660,
-		left:250
-	});
-	self.add(validate);
-	
-	var cancel = Ti.UI.createButton({
-		backgroundColor: '#FF0000',
-		color:'#FFFFFF',
-		title:"X",
-		height:50,
-		width:150,
-		top:660,
-		left:100
-	});
-	self.add(cancel);
-	cancel.addEventListener("touchend", function() {
+	var validate = new Bouton("OK", 50, 150, 660, 250),
+		cancel = new Bouton("X", 50, 150, 660, 100);
+		
+	validate.setBackgroundColor("#00FF00");
+	cancel.setBackgroundColor("#FF0000");
+	cancel.click(function(e) {
 		proposition = 0;
 		operation = 0;
 		refreshProposition();
-	}, false);
+	});
 	
 	var endTime = (new Date()).getTime() + 120*1000;
 	var setTimer = setInterval(function() {
@@ -221,13 +220,10 @@ function TrainingView() {
 			clearInterval(setTimer);
 		} else {
 			var sec = Math.round((endTime - now) / 1000);
-			timer.text = Math.floor(sec/60) + ":" +((sec%60) >9 ? "" : "0")+ sec%60;
+			timer.setText( Math.floor(sec/60) + ":" +((sec%60) >9 ? "" : "0") + sec%60 );
 		}
 	}, 500);
 	
-	function endGame() {
-		alert("Game over");
-	}
 	
 	return self;
 }
